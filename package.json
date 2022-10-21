@@ -1,0 +1,24 @@
+{
+  "name": "what-do-we-watch",
+  "version": "1.0.0",
+  "description": "Consumo API The Movie db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paulaxam/what-do-we-watch.git"
+  },
+  "keywords": [
+    "API",
+    "axios",
+    "JavaScript"
+  ],
+  "author": "Paula Cudicio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Paulaxam/what-do-we-watch/issues"
+  },
+  "homepage": "https://github.com/Paulaxam/what-do-we-watch#readme"
+}

@@ -1,0 +1,373 @@
+
+:root {
+    --blue-evening: #198891;
+    --violet-sunset: #be7a8c;
+    --grey-cloud: #98878f;
+    --blue-stormy: #242735;
+    --violet-dawn: #721664;
+    --white: #ecebf3;
+
+    --main-font: 'Signika', sans-serif;
+    --light: 300;
+    --medium: 500;
+    --bold: 700;
+    --font-s: 1.2rem;
+    --font-m: 1.6rem;
+    --font-l: 2rem;
+}
+
+html {
+    font-size: 65.2%;
+    font-family: var(--main-font);
+    background-color: var(--blue-stormy);
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3,auto);
+}
+
+img {
+    width: 130px;
+    height: auto;
+}
+
+h3 {
+    font-size: var(--font-m);
+    padding-left: 8px;
+    padding-bottom: 12px;
+}
+
+/*----------Barra de navegación--------------*/
+
+nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    background-image: linear-gradient(180deg,rgba(0,0,0,.7) 10%,transparent);
+    padding: 2px 8px;
+    grid-row: 1/2;
+}
+
+nav ul {
+    list-style: none;
+    position: absolute;
+    top: 50px;
+    left: -100%;
+    background-color:var(--blue-stormy);
+    padding: 8px;
+    height: 100vh;
+    width: 30%;
+    z-index: 30;
+}
+
+nav ul li {
+    padding: 2px 0;
+}
+
+nav ul li a {
+    color: var(--white);
+}
+
+nav img.menu-logo {
+    width: 120px;
+    padding-top: 8px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.705));
+    position: absolute;
+    z-index: 5;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+nav span.mobile-menu {
+    color: var(--white);
+    cursor: pointer;
+}
+
+nav form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: auto;
+    padding: 2px;
+    border: 2px solid var(--white);
+    background-color: transparent;
+    border-radius: 8px; 
+}
+
+nav form input {
+    width: 30px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: var(--violet-sunset);
+    font-size: var(--font-s);
+    margin: 0 auto;
+    transition: width 0.3s ease-in-out;
+}
+
+nav form input:focus {
+    width: 80px;
+}
+
+nav form button {
+    background-color: transparent;
+    border: none;
+    padding: 0 2px;
+    margin: 0 auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+nav form button span.material-symbols-outlined {
+    font-size: var(--font-m);
+    color: var(--white);
+    margin: 0 auto;
+}
+
+
+/*-------------------------------------------------------------------------*/
+/*---------Sección main-------------*/
+
+section {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    grid-row: 2/3;
+}
+
+/*----MAIN-wellcome---*/
+
+section#main article.wellcome {
+    position: relative;
+    width: 100%;
+    height: 20vh;
+    overflow: hidden;
+    display: flex;
+}
+
+section#main article.wellcome img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: absolute;
+    z-index: 0;
+    place-self: center;
+    margin: 0 auto;
+    opacity: 50%;
+}
+
+section#main article.wellcome div.wellcome-style {
+    position: absolute;
+    z-index: 1;
+    background-image: linear-gradient(90deg,var(--blue-evening) 10%,transparent);
+    width: 100%;
+    height: 100%;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 8px;
+}
+
+section#main article.wellcome div.wellcome-style h2 {
+    font-size: var(--font-l);
+}
+
+section#main article.wellcome div.wellcome-style p {
+    font-size: var(--font-m);
+}
+
+/*--------------------------*/
+
+/*------MEIN-trending movies & series, random categories----*/
+
+article.trending-movies, article.trending-series, article.random-category-1, article.random-category-2 {
+    width: 100%;
+    height: auto;
+    color: var(--white);
+    padding-bottom: 12px;
+    font-size: var(--font-s);
+}
+
+div.trending-movies-container, div.trending-series-container, div.random1-container, div.random2-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+div.movie-data-container, div.serie-data-container, div.random1-data-container, div.random2-data-container {
+    position: relative;
+    width: max-content;
+    height: 208px;
+    cursor: pointer;
+}
+
+div.movie-data-container img, div.serie-data-container img, div.random1-data-container img, div.random2-data-container img {
+    width: 130px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+div.raiting-number {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 3;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: var(--blue-evening);
+}
+/*----------------------------------------*/
+
+/*-----MAIN-Most-popular--------*/
+article.most-popular {
+    width: 100%;
+    height: 30vh;
+    color: var(--white);
+    padding-bottom: 12px;
+}
+
+div.most-popular-container {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    overflow: hidden;
+    
+}
+
+div.most-popular-container img {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    top:0
+
+}
+
+div.most-popular-txt {
+    position: absolute;
+    z-index: 1;
+    top: 15%;
+    left: 8px;
+}
+
+div.most-popular-txt h3 {
+    font-size: var(--font-l);
+    padding-left: 0px;
+}
+
+div.most-popular-txt p {
+    font-size: var(--font-m);
+}
+
+div.most-popular-raiting-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--blue-evening);
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    bottom: 10px;
+}
+/*----------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+
+h2.section-name {
+    color: var(--white);
+    font-size: var(--font-l);
+    padding: 0 0 12px 8px;
+}
+
+
+
+
+
+/*----Footer-----*/
+
+footer {
+    background-color: #721664;
+    grid-row: 3/4;
+}
+
+/*--------INACTIVE----------*/
+.inactive {
+    display: none !important;
+}
+
+/*----TOOGLE-MENU---*/
+.toggle-menu {
+    left:0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------Scroll-bars---------------*/
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color:  var(--grey-cloud) rgba(0, 0, 255, 0);
+  } 
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--grey-cloud);
+    border-radius: 20px;
+  }
+
+
