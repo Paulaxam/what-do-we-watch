@@ -18,10 +18,10 @@
         </span>
         <img src="./assets/LogoWDWW1.png" alt="Logo What do we whatch" class="menu-logo">
         <ul class="menu-list">
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Series</a></li>
-            <li><a href="">Películas</a></li>
-            <li><a href="">Categorías</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Tv</a></li>
+            <li><a href="">Movies</a></li>
+            <li><a href="">Categories</a></li>
         </ul>
         <form action="" id="search-bar">
             <input type="search" name="movie-search">
@@ -38,67 +38,53 @@
             <article class="wellcome">
                 <img src="https://media.revistagq.com/photos/5d2f0d6e987c410008631535/master/pass/del%20reves.jpg" alt="">
                 <div class="wellcome-style">
-                    <h2>Bienvenido!</h2>
-                    <p>Millones de películas y series te están esperando. Explora ya!</p>
+                    <h2>Wellcome!</h2>
+                    <p>Millons of movies and series are waiting for you. Explore now!</p>
                 </div>
             </article>
 
             <article class="trending-movies main-trending-movies">
-                <h3>Películas en tendencia</h3>
-                <div class="trending-movies-container">
-                    <div class="movie-data-container">
+                <h3>Trending movies</h3>
+                <div class="trending-movies-container main-trending-movies-container">
+                    <!-- <div class="movie-data-container">
                         <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/lGIkv9fQ3i7yVcJXDvG0Vry00LI.jpg" alt="Nombre peli" class="movie-img">
-                        <div class="raiting-number"></div>
-                    </div>
-                    <div class="movie-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/lGIkv9fQ3i7yVcJXDvG0Vry00LI.jpg" alt="Nombre peli" class="movie-img">
-                        <div class="raiting-number"></div>
-                    </div>
-                    <div class="movie-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/lGIkv9fQ3i7yVcJXDvG0Vry00LI.jpg" alt="Nombre peli" class="movie-img">
-                        <div class="raiting-number"></div>
-                    </div>
+                        <div class="raiting-number">
+                            <p>5</p>
+                        </div>
+                    </div> -->
                 </div>
             </article>
 
             <article class="trending-series">
-                <h3>Series en tendencia</h3>
-                <div class="trending-series-container">
-                    <div class="serie-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/vlUMBgKO1HOwPMJwHnHzr99BHwN.jpg" alt="Nombre serie" class="serie-img">
-                        <div class="raiting-number"></div>
-                    </div>
+                <h3>Trending Tv series</h3>
+                <div class="trending-series-container main-trending-series-container">
                 </div>
             </article>
 
             <article class="most-popular main-most-popular">
-                <div class="most-popular-container">
+                <!-- <div class="most-popular-container">
                     <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dLhbSD0Xh2tDggRwqA4qZWmekQU.jpg" alt="Nombre de la sugerencia" class="most-popular-img">
                     <div class="most-popular-txt">
                         <h3>Titulo</h3>
                         <p>Descripción</p>
                     </div>
                     <div class="most-popular-raiting-number"></div>
-                </div>
+                </div> -->
             </article>
 
             <article class="random-category-1">
-                <h3>Nombre de la categoría</h3>
-                <div class="random1-container">
-                    <div class="random1-data-container">
+                <h3><span class="movie-category"></span> movies</h3>
+                <div class="random-movie-container">
+                    <!-- <div class="random1-data-container">
                         <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/vlUMBgKO1HOwPMJwHnHzr99BHwN.jpg" alt="Nombre serie" class="serie-img">
                         <div class="raiting-number"></div>
-                    </div>
+                    </div> -->
                 </div>
             </article>
 
             <article class="random-category-2">
-                <h3>Nombre de la categoría</h3>
-                <div class="random2-container">
-                    <div class="random2-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/vlUMBgKO1HOwPMJwHnHzr99BHwN.jpg" alt="Nombre serie" class="serie-img">
-                        <div class="raiting-number"></div>
-                    </div>
+                <h3><span class="serie-category"></span> Tv series</h3>
+                <div class="random-tv-container">
                 </div>
             </article>
         </section>
@@ -286,6 +272,7 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempore excepturi, libero omnis voluptatibus doloribus, facere eligendi odio tenetur at nulla blanditiis voluptatum. Obcaecati corrupti itaque assumenda temporibus exercitationem at?</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/keys.js"></script>
     <script src="./index.js"></script>
 </body>
