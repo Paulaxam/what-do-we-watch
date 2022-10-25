@@ -213,7 +213,7 @@ article.trending-movies, article.trending-series, article.random-category-1, art
     font-size: var(--font-s);
 }
 
-div.trending-movies-container, div.trending-series-container, div.random1-container, div.random2-container {
+div.trending-movies-container, div.trending-series-container, div.random-tv-container, div.random-movie-container {
     width: 100%;
     height: auto;
     display: flex;
@@ -250,6 +250,15 @@ div.raiting-number {
     bottom: 0;
     margin: auto;
     background-color: var(--blue-evening);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.raiting-number p {
+    text-align: center;
+    color: var(--white);
+    font-size: var(--font-s);
 }
 /*----------------------------------------*/
 
@@ -274,8 +283,8 @@ div.most-popular-container img {
     z-index: 0;
     width: 100%;
     height: auto;
-    top:0
-
+    top:-50%;
+    margin: auto;
 }
 
 div.most-popular-txt {
@@ -291,7 +300,14 @@ div.most-popular-txt h3 {
 }
 
 div.most-popular-txt p {
-    font-size: var(--font-m);
+    font-size: 1rem;
+    width: 50%;
+    height: 12vh;
+    overflow: hidden;
+}
+
+div.most-popular-txt p:hover, div.most-popular-txt p:active {
+    overflow-y: scroll;
 }
 
 div.most-popular-raiting-number {
@@ -303,7 +319,16 @@ div.most-popular-raiting-number {
     z-index: 2;
     right: 10px;
     bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+div.most-popular-raiting-number p {
+    font-size: var(--font-m);
+    text-align: center;
+}
+
 /*----------------------------------------------*/
 
 /*--------------------------------------------------------------------------------------------------------------------------------*/
