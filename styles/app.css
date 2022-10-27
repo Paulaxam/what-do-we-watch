@@ -47,6 +47,11 @@ h3 {
     padding-bottom: 12px;
 }
 
+h2 {
+    color: var(--white);
+    font-size: var(--font-l);
+    padding: 0 0 12px 8px;
+}
 /*----------Barra de navegación--------------*/
 
 nav {
@@ -72,14 +77,15 @@ nav ul {
     height: 100vh;
     width: 30%;
     z-index: 30;
+    opacity: 0;
+    transition: left 0.3s ease-in, opacity 0.4s ease-in;
 }
 
 nav ul li {
     padding: 2px 0;
-}
-
-nav ul li a {
     color: var(--white);
+    font-size: var(--font-m);
+    cursor: pointer;
 }
 
 nav img.menu-logo {
@@ -205,7 +211,7 @@ section#main article.wellcome div.wellcome-style p {
 
 /*------MEIN-trending movies & series, random categories----*/
 
-article.trending-movies, article.trending-series, article.random-category-1, article.random-category-2 {
+article.trending-movies, article.trending-series, article.random-category-1, article.random-category-2, article.categories {
     width: 100%;
     height: auto;
     color: var(--white);
@@ -330,17 +336,193 @@ div.most-popular-raiting-number p {
 }
 
 /*----------------------------------------------*/
+/* Categories*/
 
-/*--------------------------------------------------------------------------------------------------------------------------------*/
+div.movies-categories-container {
+    display: grid;
+    grid-template-rows: repeat(19,auto);
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    padding: 8px;
+}
 
-h2.section-name {
-    color: var(--white);
-    font-size: var(--font-l);
-    padding: 0 0 12px 8px;
+div.tv-categories-container {
+    display: grid;
+    grid-template-rows: repeat(16,auto);
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    padding: 8px;
+}
+
+div.category-banner {
+    width: 100%;
+    height: 8vh;
+    background-image: url('https://www.themoviedb.org/t/p/original/hYZ4a0JvPETdfgJJ9ZzyFufq8KQ.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 
+            11px 10px 35px -11px rgba(17,17,20,0.56),
+            -13px -12px 35px -11px rgba(17,17,20,0.56);
+}
+
+div.c28 {
+    background-image: url('https://www.themoviedb.org/t/p/original/ApgtU8ZQGdB6KOGKaINfhEUiLea.jpg');
+    background-position: bottom;
+}
+
+div.c12 {
+    background-image: url('https://www.themoviedb.org/t/p/original/hdVPl07thMP4NeOQTWdFkgG3KmZ.jpg');
+    background-position: top;
+}
+
+div.c16 {
+    background-image: url('https://www.themoviedb.org/t/p/original/e04iBCX3582bPRsYUb82texxZIY.jpg');
+}
+
+div.c35 {
+    background-image: url('https://www.themoviedb.org/t/p/original/5FFpcmPzD5mhLom7bymZq7Py8eT.jpg');
+    background-position: top;
+}
+
+div.c80 {
+    background-image: url('https://www.themoviedb.org/t/p/original/leeHVfEoza4GaZio1tIzevz6XYc.jpg');
+}
+
+div.c99 {
+    background-image: url('https://www.themoviedb.org/t/p/original/n9gbUay2DviK153snhFO2ldxv5l.jpg');
+    background-position: top;
+}
+
+div.c18 {
+    background-image: url('https://www.themoviedb.org/t/p/original/qvKO17IESSCM9ABguUDtGnc83De.jpg');
+    background-position: top;
+}
+
+div.c10751 {
+    background-image: url('https://www.themoviedb.org/t/p/original/eXOLYCU3Ue5U6afVmvyIHNthfIh.jpg');
+    background-position: top;
+}
+
+div.c14 {
+    background-image: url('https://www.themoviedb.org/t/p/original/o0s4XsEDfDlvit5pDRKjzXR4pp2.jpg');
+    background-position: top;
+}
+
+div.c36 {
+    background-image: url('https://www.themoviedb.org/t/p/original/gr5YD5dnF0QbIF00ovdb9AtXa7g.jpg');
+}
+
+div.c27 {
+    background-image: url('https://www.themoviedb.org/t/p/original/cw5snHBL1Dmig3mhcjhxx7aGxnl.jpg');
+}
+
+div.c10402 {
+    background-image: url('https://www.themoviedb.org/t/p/original/pbXgLEYh8rlG2Km5IGZPnhcnuSz.jpg');
+    background-position: top;
+}
+
+div.c9648 {
+    background-image: url('https://www.themoviedb.org/t/p/original/ntxArhtReGCqQSWFXk0c0Yt8uDO.jpg');
+    background-position: top;
+}
+
+div.c10749 {
+    background-image: url('https://www.themoviedb.org/t/p/original/6cpRpfD3isvluFwXDGSiDVyibPJ.jpg');
+    background-position: top;
+}
+
+div.c878 {
+    background-image: url('https://www.themoviedb.org/t/p/original/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg');
+}
+
+div.c10770 {
+    background-image: url('https://www.themoviedb.org/t/p/original/j3CSGG01PUh6nsju4oIfPGeoNQr.jpg');
+    background-position: top;
+}
+
+div.c53 {
+    background-image: url('https://www.themoviedb.org/t/p/original/wAsjRmGfyDoy54zYuQn0GsAWrlJ.jpg');
+}
+
+div.c10752 {
+    background-image: url('https://www.themoviedb.org/t/p/original/6O0lsCK90jZCyPvyYSt8Szzlnd6.jpg');
+}
+
+div.c37 {
+    background-image: url('https://www.themoviedb.org/t/p/original/3gx3ls1iJHoSK4qwMVcBk02322p.jpg');
+    background-position: top;
+}
+
+div.c10759 {
+    background-image: url('https://www.themoviedb.org/t/p/original/wHGWiOo9EHRN1aTX4UNg7STOvrk.jpg');
+}
+
+div.c10762 {
+    background-image: url('https://www.themoviedb.org/t/p/original/fu2OIK3X1VWpQGhJPw2IWmoMu89.jpg');
+}
+
+div.c10763 {
+    background-image: url('https://www.themoviedb.org/t/p/original/bgo1ixOB2U6hxl8Og2TZritWKaD.jpg');
+}
+
+div.c10764 {
+    background-image: url('https://www.themoviedb.org/t/p/original/dzOASDkrgmdVsI9as1zt2kdp6my.jpg');
+    background-position: top;
+}
+
+div.c10765 {
+    background-image: url('https://www.themoviedb.org/t/p/original/achmETPRJZc9QVXsMPgHwYEyNar.jpg');
+}
+
+div.c10766 {
+    background-image: url('https://www.themoviedb.org/t/p/original/mzgxjQFLYPk73bCYeGFWOAmKqV0.jpg');
+    background-position: top;
+}
+
+div.c10767 {
+    background-image: url('https://www.themoviedb.org/t/p/original/7Fe5rgtHcqot9aHYIwP6MCGPvgC.jpg');
+    background-position: top;
+}
+
+div.c10768 {
+    background-image: url('https://www.themoviedb.org/t/p/original/2yDV0xLyqW88dn5qE7YCRnoYmfy.jpg');
+}
+
+div.movies-categories-container div:nth-child(odd) {
+    grid-column: 1/8;
+}
+
+div.movies-categories-container div:nth-child(even) {
+    grid-column: 2/9;
+}
+
+div.tv-categories-container div:nth-child(odd) {
+    grid-column: 1/8;
+}
+
+div.tv-categories-container div:nth-child(even) {
+    grid-column: 2/9;
+}
+
+p.category-name {
+    font-size: var(--font-m);
+    width: max-content;
+    height: fit-content;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; 
 }
 
 
 
+/*--------------------------------------------------------------------------------------------------------------------------------*/
 
 
 /*----Footer-----*/
@@ -358,6 +540,8 @@ footer {
 /*----TOOGLE-MENU---*/
 .toggle-menu {
     left:0;
+    opacity: 1;
+    transition: left 0.3s ease-out, opacity 0.4s ease-out;
 }
 
 
