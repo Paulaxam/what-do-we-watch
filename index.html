@@ -18,13 +18,14 @@
         </span>
         <img src="./assets/LogoWDWW1.png" alt="Logo What do we whatch" class="menu-logo">
         <ul class="menu-list">
-            <li><a href="">Home</a></li>
-            <li><a href="">Tv</a></li>
-            <li><a href="">Movies</a></li>
-            <li><a href="">Categories</a></li>
+            <li id="menu-home">Home</li>
+            <li id="menu-tv">Tv</li>
+            <li id="menu-movies">Movies</li>
+            <li id="menu-categories">Categories</li>
+            <li id="menu-search">Search</li>
         </ul>
         <form action="" id="search-bar">
-            <input type="search" name="movie-search">
+            <input type="search" name="movie-search" id="search-input">
             <button type="button" id="search-button">
                 <span class="material-symbols-outlined">
                 search
@@ -55,7 +56,7 @@
                 </div>
             </article>
 
-            <article class="trending-series">
+            <article class="trending-series main-trending-series">
                 <h3>Trending Tv series</h3>
                 <div class="trending-series-container main-trending-series-container">
                 </div>
@@ -90,145 +91,56 @@
         </section>
 
 
-        <section id="movies" class="inactive">
-            <h2 class="section-name">Películas</h2>
+        <section id="movies">
+            <h2 class="section-name">Movies</h2>
 
             <article class="trending-movies movies-trending-movies">
-                <h3>Películas en tendencia</h3>
-                <div class="trending-movies-container">
-                    <div class="movie-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/lGIkv9fQ3i7yVcJXDvG0Vry00LI.jpg" alt="Nombre peli" class="movie-img">
-                        <div class="raiting-number"></div>
-                    </div>
-                    <div class="movie-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/lGIkv9fQ3i7yVcJXDvG0Vry00LI.jpg" alt="Nombre peli" class="movie-img">
-                        <div class="raiting-number"></div>
-                    </div>
-                    <div class="movie-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/lGIkv9fQ3i7yVcJXDvG0Vry00LI.jpg" alt="Nombre peli" class="movie-img">
-                        <div class="raiting-number"></div>
-                    </div>
+                <h3>Trending movies</h3>
+                <div class="trending-movies-container movies-trending-movies-container">
                 </div>
             </article>
 
 
             <article class="most-popular movies-most-popular">
-                <div class="most-popular-container">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dLhbSD0Xh2tDggRwqA4qZWmekQU.jpg" alt="Nombre de la sugerencia" class="most-popular-img">
-                    <div class="most-popular-txt">
-                        <h3>Titulo</h3>
-                        <p>Descripción</p>
-                    </div>
-                    <div class="most-popular-raiting-number"></div>
-                </div>
             </article>
 
-            <article class="random-category-1">
-                <h3>Nombre de la categoría</h3>
-                <div class="random1-container">
-                    <div class="random1-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/vlUMBgKO1HOwPMJwHnHzr99BHwN.jpg" alt="Nombre serie" class="serie-img">
-                        <div class="raiting-number"></div>
-                    </div>
-                </div>
+            <article class="movies-categories categories">
+                <h3>Categories</h3>
+                <div class="movies-categories-container">
+                    <!-- <div class="category-banner">
+                        <p class="category-name">Action</p>
+                    </div> -->
+                </div> 
             </article>
-
-            <article class="random-category-2">
-                <h3>Nombre de la categoría</h3>
-                <div class="random2-container">
-                    <div class="random2-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/vlUMBgKO1HOwPMJwHnHzr99BHwN.jpg" alt="Nombre serie" class="serie-img">
-                        <div class="raiting-number"></div>
-                    </div>
-                </div>
-            </article>
-        </section>
+    </section>
 
 
-        <section id="series" class="inactive">
+
+        <section id="series">
             <h2 class="section-name">Series</h2>
 
-            <article class="trending-series">
-                <h3>Series en tendencia</h3>
-                <div class="trending-series-container">
-                    <div class="serie-data-container">
-                        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/vlUMBgKO1HOwPMJwHnHzr99BHwN.jpg" alt="Nombre serie" class="serie-img">
-                        <div class="raiting-number"></div>
-                    </div>
+            <article class="trending-series tv-trending-series">
+                <h3>Trending series</h3>
+                <div class="trending-series-container tv-trending-series-container">
                 </div>
             </article>
 
-            <article class="most-popular series-most-popular">
+            <article class="most-popular tv-most-popular">
                 <div class="most-popular-container">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dLhbSD0Xh2tDggRwqA4qZWmekQU.jpg" alt="Nombre de la sugerencia" class="most-popular-img">
-                    <div class="most-popular-txt">
-                        <h3>Titulo</h3>
-                        <p>Descripción</p>
-                    </div>
-                    <div class="most-popular-raiting-number"></div>
                 </div>
             </article>
 
-            <article class="random-category-1">
-                <h3>Nombre de la categoría</h3>
-                <div class="trending-series-container">
-                    <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/wbFSslyJrJV0nn3lv0KZb2bEfs1.jpg" alt="Nombre serie" class="serie-img">
-                </div>
-            </article>
-
-            <article class="random-category-2">
-                <h3>Nombre de la categoría</h3>
-                <div class="trending-series-container">
-                    <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/vlUMBgKO1HOwPMJwHnHzr99BHwN.jpg" alt="Nombre serie" class="serie-img">
-                </div>
+            <article class="tv-categories categories">
+                <h3>Categories</h3>
+                <div class="tv-categories-container">
+                    <!-- <div class="category-banner">
+                        <p class="category-name">Action</p>
+                    </div> -->
+                </div> 
             </article>
         </section>
 
-
-        <section id="categories" class="inactive">
-            <h2>Categorías</h2>
-            <div class="category-container">
-                <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/i0uajcHH9yogXMfDHpOXexIukG9.jpg" alt="">
-                <p>Nombre categoría</p>
-            </div>
-            <button disabled="button">
-                <span class="material-symbols-outlined">
-                    add_circle
-                </span>
-            </button>
-        </section>
-
-
-        <section id="categories--plus" class="inactive">
-            <article class="category--plus-movies">
-                <form class="movies-categories-list">
-                    <h2>Pelíulas</h2>
-                    <select name="movies-categories-list">
-                        <option>Categoría1</option>
-                        <option>Categoría1</option>
-                    </select>
-                </form>
-                <div class="category-movies-container">
-                    <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/ybSIUt48PsM08F4UZwHdjL9ZVG2.jpg" alt="Nombre peli" class="movie-img">
-                </div>
-            </article>
-
-            <article class="category--plus-series">
-                <form class="movies-categories-list">
-                    <h2>Series</h2>
-                    <select name="series-categories-list">
-                        <option>Categoría1</option>
-                        <option>Categoría1</option>
-                    </select>
-                </form>
-                <div class="category-serie-container">
-                    <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/ybSIUt48PsM08F4UZwHdjL9ZVG2.jpg" alt="Nombre peli" class="movie-img">
-                </div>
-            </article>
-        </section>
-
-
-        <section id="search" class="inactive">
+        <section id="search">
             <h2>Qué quieres ver?</h2>
             <form action="" id="search-bar-large">
                 <input type="search" name="search">
@@ -244,7 +156,7 @@
         </section>
 
 
-        <section id="movie--detail" class="inactive">
+        <section id="movie--detail">
             <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u8BMLmwoc7YPHKSWawOOqC1c8lJ.jpg" alt="">
             <h2>Titulo de la peli/serie</h2>
             <div class="rating">Rating</div>
@@ -273,7 +185,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./src/nodes.js"></script>
     <script src="./src/keys.js"></script>
     <script src="./index.js"></script>
+    <script src="./src/navegation.js"></script>
 </body>
 </html>
