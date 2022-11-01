@@ -82,14 +82,14 @@ nav ul {
     background-color:var(--blue-stormy);
     padding: 8px;
     height: 100vh;
-    width: 30%;
+    width: 40%;
     z-index: 30;
     opacity: 0;
     transition: left 0.3s ease-in, opacity 0.4s ease-in;
 }
 
 nav ul li {
-    padding: 2px 0;
+    padding: 4px 0;
     color: var(--white);
     font-size: var(--font-m);
     cursor: pointer;
@@ -610,6 +610,19 @@ p.category-name {
 
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 
+/*----Categories Section----*/
+div.cat-container {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 8px;
+}
+
 
 /*----Footer-----*/
 
@@ -628,6 +641,7 @@ footer {
     left:0;
     opacity: 1;
     transition: left 0.3s ease-out, opacity 0.4s ease-out;
+    padding: 0 16px;
 }
 
 

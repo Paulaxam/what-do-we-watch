@@ -8,6 +8,7 @@ function toggleMobileMenu() {
 
 window.addEventListener("load", navegator, false);
 window.addEventListener("hashchange", navegator, false);
+
 menuHome.addEventListener("click", () => {
   location.hash = "";
   menuList.classList.remove("toggle-menu");
@@ -36,6 +37,8 @@ function navegator() {
     searchPage();
   } else if (hash.startsWith("#movie_detail")) {
     movieDetailPage();
+  } else if (hash.startsWith("#categories")) {
+    categoriesPage();
   } else {
     homePage();
   }
@@ -47,6 +50,7 @@ function homePage() {
   tvSection.classList.add("inactive");
   searchSection.classList.add("inactive");
   movieDetailSection.classList.add("inactive");
+  categoriesSection.classList.add("inactive");
   logTrendingPreview("movie");
   logTrendingPreview("tv");
   mainPopularArticle.innerHTML = "";
@@ -60,6 +64,7 @@ function moviesPage() {
   tvSection.classList.add("inactive");
   searchSection.classList.add("inactive");
   movieDetailSection.classList.add("inactive");
+  categoriesSection.classList.add("inactive");
   logTrending("movie");
   moviesCategoriesContainer.innerHTML = "";
   getRecomendedMovie1();
@@ -72,13 +77,24 @@ function tvPage() {
   tvSection.classList.remove("inactive");
   searchSection.classList.add("inactive");
   movieDetailSection.classList.add("inactive");
+  categoriesSection.classList.add("inactive");
   logTrending("tv");
   tvCategoriesContainer.innerHTML = "";
   logCategories("tv");
   getRecomendedTv();
 }
 
-function categoriesPage() {}
+function categoriesPage() {
+  mainSection.classList.add("inactive");
+  moviesSection.classList.add("inactive");
+  tvSection.classList.add("inactive");
+  searchSection.classList.add("inactive");
+  movieDetailSection.classList.add("inactive");
+  categoriesSection.classList.remove("inactive");
+  categoryContainer.innerHTML = "";
+  const [id, categoryName, mediaType] = location.hash.split("=")[1].split("_");
+  loadCategory(id, categoryName, mediaType);
+}
 
 function categoriesPlusPage() {}
 

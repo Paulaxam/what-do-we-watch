@@ -56,3 +56,8 @@ const searchSection = selector("#search");
 
 /*Section-Movie-Detail*/
 const movieDetailSection = selector("#movie--detail");
+
+/*Section - Categories */
+const categoriesSection = selector("#categories");
+const categorySelected = selector(".cat-name");
+const categoryContainer = selector(".cat-container");

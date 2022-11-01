@@ -485,6 +485,10 @@ async function logCategories(mediaType) {
 
       moviesCategoriesContainer.appendChild(categoryBanner);
       categoryBanner.appendChild(categoryP);
+
+      categoryBanner.addEventListener("click", () => {
+        location.hash = `#categories=${category.id}_${category.name}_movie`;
+      });
     });
   } else if (mediaType === "tv") {
     tvCategories = await selectCategories("tv");
@@ -499,6 +503,75 @@ async function logCategories(mediaType) {
 
       tvCategoriesContainer.appendChild(categoryBanner);
       categoryBanner.appendChild(categoryP);
+      categoryBanner.addEventListener("click", () => {
+        location.hash = `#categories=${category.id}_${category.name}_tv`;
+      });
     });
   }
+}
+
+/*Load categories selection */
+
+async function loadCategory(id, categoryName, mediaType) {
+  const newCategoryName = categoryName.replace("%20", " ");
+  categorySelected.innerHTML = newCategoryName;
+  try {
+    if (mediaType === "movie") {
+      const { data } = await api("/discover/movie", {
+        params: {
+          include_adult: false,
+          with_genres: id,
+        },
+      });
+      const movieList = data.results;
+      console.log("movieList", movieList);
+
+      /*Load movies*/
+      movieList.forEach((movie) => {
+        const movieDataContainer = create("div");
+        movieDataContainer.classList.add("movie-data-container");
+        const movieImg = create("img");
+        movieImg.classList.add("movie-img");
+        movieImg.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+        movieImg.alt = movie.title;
+        const raitingDiv = create("div");
+        raitingDiv.classList.add("raiting-number");
+        const raitingP = create("p");
+        raitingP.innerHTML = movie.vote_average;
+
+        categoryContainer.appendChild(movieDataContainer);
+        movieDataContainer.appendChild(movieImg);
+        movieDataContainer.appendChild(raitingDiv);
+        raitingDiv.appendChild(raitingP);
+      });
+    } else if (mediaType === "tv") {
+      const { data } = await api("/discover/tv", {
+        params: {
+          include_adult: false,
+          with_genres: id,
+        },
+      });
+      const tvShowsList = data.results;
+      console.log("TVList", tvShowsList);
+
+      /*Load tv Shows*/
+      tvShowsList.forEach((tvShow) => {
+        const showDataContainer = create("div");
+        showDataContainer.classList.add("movie-data-container");
+        const showImg = create("img");
+        showImg.classList.add("movie-img");
+        showImg.src = `https://image.tmdb.org/t/p/w300${tvShow.poster_path}`;
+        showImg.alt = tvShow.name;
+        const raitingDiv = create("div");
+        raitingDiv.classList.add("raiting-number");
+        const raitingP = create("p");
+        raitingP.innerHTML = tvShow.vote_average;
+
+        categoryContainer.appendChild(showDataContainer);
+        showDataContainer.appendChild(showImg);
+        showDataContainer.appendChild(raitingDiv);
+        raitingDiv.appendChild(raitingP);
+      });
+    }
+  } catch (error) {}
 }
