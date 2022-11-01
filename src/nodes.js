@@ -39,7 +39,6 @@ const moviePopularTitle = selector(".carrousel-movie-title");
 const movieLeftArrow = selector("#movie-left-arrow");
 const movieRigthArrow = selector("#movie-rigth-arrow");
 const moviePopularRaiting = selector("#carrousel-movie-raiting");
-const moviePopularDescription = selector(".carrousel-movie-description");
 
 /*Section-Tv*/
 const tvSection = selector("#series");
@@ -51,7 +50,6 @@ const tvPopularTitle = selector(".popular-tv-title");
 const tvLeftArrow = selector("#left-arrow");
 const tvRigthArrow = selector("#rigth-arrow");
 const tvPopularRaiting = selector("#popular-tv-raiting");
-const tvPopularDescription = selector(".popular-tv-description");
 
 /*Section-Search*/
 const searchSection = selector("#search");
