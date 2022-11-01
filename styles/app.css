@@ -297,7 +297,7 @@ div.most-popular-container img {
     z-index: 0;
     width: 100%;
     height: auto;
-    top:-50%;
+    top: 0;
     margin: auto;
 }
 

@@ -91,15 +91,18 @@ async function getRecomendedMovie(section) {
       params: {
         sort_by: "popularity.desc",
         include_adult: false,
+        include_video: true,
         primary_release_year: actualYear,
         "vote_average.gte": 9,
+        with_original_language: "en",
+        without_genres: [10751, 10402, 10770, 37, 10752],
       },
     });
     const movies = data.results;
     const movieAmount = movies.length;
     const choosenMovie = movies[Math.floor(Math.random() * movieAmount)];
     const viewWidth = window.screen.width;
-
+    console.log(movies);
     /*popular-movie-poster*/
     let mainPopularContainer;
     if (section === "main") {
@@ -111,12 +114,19 @@ async function getRecomendedMovie(section) {
     popularMovieContainer.classList.add("most-popular-container");
     const movieImg = create("img");
     movieImg.alt = choosenMovie.title;
-    if (viewWidth <= 400) {
-      movieImg.src = `https://image.tmdb.org/t/p/w300${choosenMovie.poster_path}`;
-    } else if (viewWidth <= 600) {
-      movieImg.src = `https://image.tmdb.org/t/p/w780${choosenMovie.poster_path}`;
+    if (viewWidth <= 500) {
+      if (choosenMovie.backdrop_path !== null) {
+        movieImg.src = `https://image.tmdb.org/t/p/w780${choosenMovie.backdrop_path}`;
+      } else {
+        movieImg.src = `https://image.tmdb.org/t/p/w780${choosenMovie.poster_path}`;
+        movieImg.style.top = "-50%";
+      }
     } else {
-      movieImg.src = `https://image.tmdb.org/t/p/w1280${choosenMovie.poster_path}`;
+      if (choosenMovie.backdrop_path !== null) {
+        movieImg.src = `https://image.tmdb.org/t/p/w1280${choosenMovie.backdrop_path}`;
+      } else {
+        movieImg.src = `https://image.tmdb.org/t/p/w1280${choosenMovie.poster_path}`;
+      }
     }
     const movieDetailContainer = create("div");
     movieDetailContainer.classList.add("most-popular-txt");
