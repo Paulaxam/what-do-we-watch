@@ -32,9 +32,14 @@ const mainRandomTvArticle = selector(".random-category-2");
 /*Section-movies*/
 const moviesSection = selector("#movies");
 const moviesTrendingMovArticle = selector(".movies-trending-movies");
-const moviesPopularArticle = selector(".movies-most-popular");
+const moviePopularArticle = selector(".movies-most-popular");
 const moviesCategoriesArticle = selector(".movies-categories");
 const moviesCategoriesContainer = selector(".movies-categories-container");
+const moviePopularTitle = selector(".carrousel-movie-title");
+const movieLeftArrow = selector("#movie-left-arrow");
+const movieRigthArrow = selector("#movie-rigth-arrow");
+const moviePopularRaiting = selector("#carrousel-movie-raiting");
+const moviePopularDescription = selector(".carrousel-movie-description");
 
 /*Section-Tv*/
 const tvSection = selector("#series");
@@ -42,6 +47,11 @@ const tvTrendingMovArticle = selector(".tv-trending-series");
 const tvPopularArticle = selector(".tv-most-popular");
 const tvCategoriesArticle = selector(".tv-categories");
 const tvCategoriesContainer = selector(".tv-categories-container");
+const tvPopularTitle = selector(".popular-tv-title");
+const tvLeftArrow = selector("#left-arrow");
+const tvRigthArrow = selector("#rigth-arrow");
+const tvPopularRaiting = selector("#popular-tv-raiting");
+const tvPopularDescription = selector(".popular-tv-description");
 
 /*Section-Search*/
 const searchSection = selector("#search");

@@ -20,10 +20,6 @@ menuTv.addEventListener("click", () => {
   location.hash = "#tv";
   menuList.classList.remove("toggle-menu");
 });
-menuCategories.addEventListener("click", () => {
-  location.hash = "#categories";
-  menuList.classList.remove("toggle-menu");
-});
 menuSearch.addEventListener("click", () => {
   location.hash = "#search";
   menuList.classList.remove("toggle-menu");
@@ -65,10 +61,9 @@ function moviesPage() {
   searchSection.classList.add("inactive");
   movieDetailSection.classList.add("inactive");
   logTrending("movie");
-  moviesPopularArticle.innerHTML = "";
   moviesCategoriesContainer.innerHTML = "";
+  getRecomendedMovie1();
   logCategories("movie");
-  getRecomendedMovie("movies");
 }
 
 function tvPage() {
@@ -78,10 +73,9 @@ function tvPage() {
   searchSection.classList.add("inactive");
   movieDetailSection.classList.add("inactive");
   logTrending("tv");
-  tvPopularArticle.innerHTML = "";
   tvCategoriesContainer.innerHTML = "";
   logCategories("tv");
-  getRecomendedMovie("tv");
+  getRecomendedTv();
 }
 
 function categoriesPage() {}

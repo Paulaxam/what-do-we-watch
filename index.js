@@ -82,7 +82,7 @@ async function logTrendingPreview(mediaType) {
   }
 }
 
-/*Recomended movie */
+/*Home Recomended movie */
 
 async function getRecomendedMovie(section) {
   const actualYear = new Date().getFullYear();
@@ -145,6 +145,155 @@ async function getRecomendedMovie(section) {
     /*HACER ALGO CON EL ERROR DE QUE NO CARGUE LA DATA QUE CORRESPONDE!!! */
     console.log(error);
   }
+}
+
+/*Recomended Serie*/
+
+async function getRecomendedTv() {
+  try {
+    const { data } = await api("/tv/popular");
+    const popularTvShows = data.results;
+    tvPopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${popularTvShows[0].backdrop_path})`;
+    tvPopularTitle.innerHTML = popularTvShows[0].name;
+    tvPopularRaiting.innerHTML = popularTvShows[0].vote_average;
+    let counter = 1;
+    console.log(popularTvShows);
+    let interval = setInterval(() => {
+      tvPopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${popularTvShows[counter].backdrop_path})`;
+      tvPopularTitle.innerHTML = popularTvShows[counter].name;
+      tvPopularRaiting.innerHTML = popularTvShows[counter].vote_average;
+      if (counter < popularTvShows.length - 1) {
+        counter++;
+      } else {
+        counter = 0;
+      }
+    }, 6000);
+
+    /*Tv most popular arrow functions */
+
+    tvLeftArrow.addEventListener("click", moveLeftManually);
+    tvRigthArrow.addEventListener("click", moveRigthManually);
+
+    function moveLeftManually() {
+      clearInterval(interval);
+      if (counter > 1) {
+        counter--;
+        tvPopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${
+          popularTvShows[counter - 1].backdrop_path
+        })`;
+        tvPopularTitle.innerHTML = popularTvShows[counter - 1].name;
+        tvPopularRaiting.innerHTML = popularTvShows[counter - 1].vote_average;
+      } else {
+        tvPopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${popularTvShows[0].backdrop_path})`;
+        tvPopularTitle.innerHTML = popularTvShows[0].name;
+        tvPopularRaiting.innerHTML = popularTvShows[0].vote_average;
+      }
+    }
+
+    function moveRigthManually() {
+      clearInterval(interval);
+      if (counter < popularTvShows.length) {
+        counter++;
+        tvPopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${
+          popularTvShows[counter - 1].backdrop_path
+        })`;
+        tvPopularTitle.innerHTML = popularTvShows[counter - 1].name;
+        tvPopularRaiting.innerHTML = popularTvShows[counter - 1].vote_average;
+      } else {
+        tvPopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${
+          popularTvShows[popularTvShows.length - 1].backdrop_path
+        })`;
+        tvPopularTitle.innerHTML =
+          popularTvShows[popularTvShows.length - 1].name;
+        tvPopularRaiting.innerHTML =
+          popularTvShows[popularTvShows.length - 1].vote_average;
+      }
+    }
+
+    window.addEventListener("hashchange", stopInterval, false);
+
+    function stopInterval() {
+      let hash = location.hash;
+
+      if (hash !== "#tv") {
+        clearInterval(interval);
+      }
+    }
+  } catch (error) {}
+}
+
+/*Recomended Movie*/
+
+async function getRecomendedMovie1() {
+  try {
+    const { data } = await api("/movie/popular");
+    const popularMovies = data.results;
+    moviePopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${popularMovies[0].backdrop_path})`;
+    moviePopularTitle.innerHTML = popularMovies[0].title;
+    moviePopularRaiting.innerHTML = popularMovies[0].vote_average;
+    let counter = 1;
+    let interval = setInterval(() => {
+      moviePopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${popularMovies[counter].backdrop_path})`;
+      moviePopularTitle.innerHTML = popularMovies[counter].title;
+      moviePopularRaiting.innerHTML = popularMovies[counter].vote_average;
+      if (counter < popularMovies.length - 1) {
+        counter++;
+      } else {
+        counter = 0;
+      }
+    }, 6000);
+
+    /*Movie most popular arrow functions */
+
+    movieLeftArrow.addEventListener("click", moveLeftManually);
+    movieRigthArrow.addEventListener("click", moveRigthManually);
+
+    function moveLeftManually() {
+      clearInterval(interval);
+      if (counter > 1) {
+        counter--;
+        moviePopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${
+          popularMovies[counter - 1].backdrop_path
+        })`;
+        moviePopularTitle.innerHTML = popularMovies[counter - 1].title;
+        moviePopularRaiting.innerHTML = popularMovies[counter - 1].vote_average;
+      } else {
+        moviePopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${popularMovies[0].backdrop_path})`;
+        moviePopularTitle.innerHTML = popularMovies[0].title;
+        moviePopularRaiting.innerHTML = popularMovies[0].vote_average;
+      }
+    }
+
+    function moveRigthManually() {
+      clearInterval(interval);
+      if (counter < popularMovies.length) {
+        counter++;
+        moviePopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${
+          popularMovies[counter - 1].backdrop_path
+        })`;
+        moviePopularTitle.innerHTML = popularMovies[counter - 1].title;
+        moviePopularRaiting.innerHTML = popularMovies[counter - 1].vote_average;
+      } else {
+        moviePopularArticle.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${
+          popularMovies[popularMovies.length - 1].backdrop_path
+        })`;
+        moviePopularTitle.innerHTML =
+          popularMovies[popularMovies.length - 1].title;
+        moviePopularRaiting.innerHTML =
+          popularMovies[popularMovies.length - 1].vote_average;
+      }
+    }
+
+    window.addEventListener("hashchange", stopInterval, false);
+
+    function stopInterval() {
+      let hash = location.hash;
+
+      if (hash !== "#tv") {
+        clearInterval(interval);
+      }
+    }
+  } catch (error) {}
 }
 
 /*Get the list of movie and serie genres*/
@@ -353,5 +502,3 @@ async function logCategories(mediaType) {
     });
   }
 }
-
-logCategories("tv");
