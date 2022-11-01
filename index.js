@@ -289,7 +289,7 @@ async function getRecomendedMovie1() {
     function stopInterval() {
       let hash = location.hash;
 
-      if (hash !== "#tv") {
+      if (hash !== "#movies") {
         clearInterval(interval);
       }
     }
