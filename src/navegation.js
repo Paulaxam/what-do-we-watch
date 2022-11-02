@@ -25,6 +25,15 @@ menuSearch.addEventListener("click", () => {
   location.hash = "#search";
   menuList.classList.remove("toggle-menu");
 });
+searchBtn.addEventListener("click", () => {
+  menuList.classList.remove("toggle-menu");
+  const search = searchInput.value;
+  if (search === "") {
+    location.hash = "";
+  } else {
+    location.hash = `#search=${search}`;
+  }
+});
 
 function navegator() {
   let hash = location.hash;
@@ -42,6 +51,9 @@ function navegator() {
   } else {
     homePage();
   }
+
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 function homePage() {
@@ -96,8 +108,13 @@ function categoriesPage() {
   loadCategory(id, categoryName, mediaType);
 }
 
-function categoriesPlusPage() {}
-
-function searchPage() {}
+function searchPage() {
+  mainSection.classList.add("inactive");
+  moviesSection.classList.add("inactive");
+  tvSection.classList.add("inactive");
+  searchSection.classList.remove("inactive");
+  movieDetailSection.classList.add("inactive");
+  categoriesSection.classList.add("inactive");
+}
 
 function movieDetailPage() {}

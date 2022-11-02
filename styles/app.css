@@ -177,6 +177,7 @@ section#main article.wellcome {
     position: relative;
     width: 100%;
     height: 20vh;
+    min-height: 130px;
     overflow: hidden;
     display: flex;
 }
@@ -280,6 +281,7 @@ div.raiting-number p {
 article.most-popular {
     width: 100%;
     height: 30vh;
+    min-height: 185px;
     color: var(--white);
     padding-bottom: 12px;
 }
@@ -442,6 +444,7 @@ div.tv-categories-container {
 div.category-banner {
     width: 100%;
     height: 8vh;
+    min-height: 50px;
     background-image: url('https://www.themoviedb.org/t/p/original/hYZ4a0JvPETdfgJJ9ZzyFufq8KQ.jpg');
     background-position: center;
     background-size: cover;
