@@ -9,6 +9,11 @@ function toggleMobileMenu() {
 window.addEventListener("load", navegator, false);
 window.addEventListener("hashchange", navegator, false);
 
+detailBackBtn.addEventListener("click", () => {
+  window.history.back();
+  menuList.classList.remove("toggle-menu");
+});
+
 menuHome.addEventListener("click", () => {
   location.hash = "";
   menuList.classList.remove("toggle-menu");
@@ -158,4 +163,12 @@ function searchPage() {
   }
 }
 
-function movieDetailPage() {}
+function movieDetailPage() {
+  mainSection.classList.add("inactive");
+  moviesSection.classList.add("inactive");
+  tvSection.classList.add("inactive");
+  searchSection.classList.add("inactive");
+  movieDetailSection.classList.remove("inactive");
+  categoriesSection.classList.add("inactive");
+  openDetailedView();
+}

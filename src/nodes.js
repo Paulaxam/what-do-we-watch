@@ -64,7 +64,20 @@ const moviesResultTitle = selector(".h3-movie-results");
 const tvResultTitle = selector(".h3-tv-results");
 
 /*Section-Movie-Detail*/
-const movieDetailSection = selector("#movie--detail");
+const movieDetailSection = selector("#movie-detail");
+const backImg = selector(".decoration1");
+const frontImg = selector(".detail-img");
+const detailBackBtn = selector("#detail-back-btn");
+const spanRating = selector("#raiting");
+const spanTime = selector("#time");
+const spanRelesed = selector("#released");
+const detailTitle = selector("#detail-title");
+const detailOverview = selector("#detail-overview");
+const companyBtn = selector("#logo-btn");
+const logoImg = selector("#logo-img");
+const detailCategories = selector(".detail-categories-container");
+const spanMediaType = selector(".mediaType");
+const similarMoviesContainer = selector("#similar-results");
 
 /*Section - Categories */
 const categoriesSection = selector("#categories");

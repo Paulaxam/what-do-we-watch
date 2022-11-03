@@ -10,7 +10,14 @@ const api = axios.create({
 
 /*Movie data container creator function */
 
-function moviePreviewCreator(container, imgSrc, movieName, raiting) {
+function moviePreviewCreator(
+  mediaType,
+  container,
+  imgSrc,
+  movieName,
+  raiting,
+  id
+) {
   const movieContainer = create("div");
   movieContainer.classList.add("movie-data-container");
   const movieImg = create("img");
@@ -21,14 +28,30 @@ function moviePreviewCreator(container, imgSrc, movieName, raiting) {
 
   movieImg.src = `https://image.tmdb.org/t/p/w300${imgSrc}`;
   movieImg.alt = movieName;
-  raitingP.innerHTML = raiting;
+  raitingP.innerHTML = Number(raiting).toFixed(1);
 
   container.appendChild(movieContainer);
   movieContainer.appendChild(movieImg);
   movieContainer.appendChild(raitingDiv);
   raitingDiv.appendChild(raitingP);
+
+  movieContainer.addEventListener("click", () => {
+    location.hash = `#movie_detail=${id}_${mediaType}`;
+  });
 }
 
+/*Network Logo obtainer */
+function networkLogo(url) {
+  let imgUrl = "";
+  if (url.includes("netflix")) {
+    imgUrl =
+      "https://www.themoviedb.org/t/p/original/t2yyOv40HZeVlLjYsCsPHnWLk4W.jpg";
+  } else if (url.includes("hbomax")) {
+    imgUrl =
+      "https://www.themoviedb.org/t/p/original/Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg";
+  }
+  return imgUrl;
+}
 /*Get trending movies - tv series */
 
 async function getTrendingMedia(mediaType) {
@@ -49,26 +72,14 @@ async function logTrendingPreview(mediaType) {
       );
       const movies = await getTrendingMedia(mediaType);
       movies.forEach((movie) => {
-        /*movie poster*/
-        const movieContainer = create("div");
-        movieContainer.classList.add("movie-data-container");
-        const movieImg = create("img");
-        movieImg.classList.add("movie-img");
-        movieImg.alt = `${movie.title}`;
-        movieImg.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
-
-        mainTrendingMoviesContainer.appendChild(movieContainer);
-        movieContainer.appendChild(movieImg);
-
-        /*movie raiting */
-        const movieRaitingContainer = create("div");
-        movieRaitingContainer.classList.add("raiting-number");
-        const movieRaitingP = create("p");
-        const movieRaiting = Number(movie.vote_average).toFixed(2);
-        movieRaitingP.innerHTML = movieRaiting;
-
-        movieContainer.appendChild(movieRaitingContainer);
-        movieRaitingContainer.appendChild(movieRaitingP);
+        moviePreviewCreator(
+          "movie",
+          mainTrendingMoviesContainer,
+          movie.poster_path,
+          movie.title,
+          movie.vote_average,
+          movie.id
+        );
       });
     } else if (mediaType === "tv") {
       const mainTrendingSeriesContainer = selector(
@@ -123,7 +134,6 @@ async function getRecomendedMovie(section) {
     const movieAmount = movies.length;
     const choosenMovie = movies[Math.floor(Math.random() * movieAmount)];
     const viewWidth = window.screen.width;
-    console.log(movies);
     /*popular-movie-poster*/
     let mainPopularContainer;
     if (section === "main") {
@@ -630,22 +640,104 @@ async function searchResults(query) {
 
     movieResults.forEach((movie) => {
       moviePreviewCreator(
+        "movie",
         searchMoviesResultsContainer,
         movie.poster_path,
         movie.title,
-        movie.vote_average
+        movie.vote_average,
+        movie.id
       );
     });
 
     tvResults.forEach((show) => {
       moviePreviewCreator(
+        "tv",
         searchTvResultsContainer,
         show.poster_path,
         show.name,
-        show.vote_average
+        show.vote_average,
+        show.id
       );
     });
 
     console.log(query, movieResults, tvResults);
+  } catch (error) {}
+}
+
+/**Detailed view */
+
+async function openDetailedView() {
+  const [id, mediaType] = location.hash.split("=")[1].split("_");
+  let detailData = {};
+  let similarContent = [];
+  backImg.style.backgroundImage = "";
+  frontImg.src = "";
+  spanRating.innerHTML = "";
+  spanTime.innerHTML = "";
+  spanRelesed.innerHTML = "";
+  detailTitle.innerHTML = "";
+  detailOverview.innerHTML = "";
+  logoImg.src = "";
+  detailCategories.innerHTML = "";
+  spanMediaType.innerHTML = "";
+  similarMoviesContainer.innerHTML = "";
+
+  try {
+    if (mediaType === "movie") {
+      const { data } = await api(`/movie/${id}`);
+      detailData = data;
+      const similarMovies = await api(`/movie/${id}/similar`);
+      similarContent = similarMovies.data.results;
+    } else if (mediaType === "tv") {
+      const { data } = await api(`/tv/${id}`);
+      detailData = data;
+      const similarShows = await api(`/tv/${id}/similar`);
+      similarContent = similarShows.data.results;
+    }
+
+    console.log(detailData);
+    if (window.innerWidth <= 600) {
+      backImg.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${detailData.poster_path})`;
+      frontImg.src = `https://image.tmdb.org/t/p/w780${detailData.poster_path}`;
+    } else {
+      backImg.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1280${detailData.poster_path})`;
+      frontImg.src = `https://image.tmdb.org/t/p/w780${detailData.poster_path}`;
+    }
+    spanRating.innerHTML = Number(detailData.vote_average).toFixed(1);
+    if (detailData.runtime) {
+      spanTime.innerHTML = `${detailData.runtime}min`;
+    } else if (detailData.seasons.length) {
+      spanTime.innerHTML = `${detailData.seasons.length - 1} Seasons`;
+    }
+    if (detailData.release_date) {
+      spanRelesed.innerHTML = detailData.release_date.split("-")[0];
+    } else if (detailData.first_air_date) {
+      spanRelesed.innerHTML = detailData.first_air_date.split("-")[0];
+    }
+    detailTitle.innerHTML = detailData.title || detailData.name;
+    detailOverview.innerHTML = detailData.overview;
+    logoImg.src = networkLogo(detailData.homepage);
+    detailData.genres.forEach((genre) => {
+      const p = create("p");
+      p.innerHTML = genre.name;
+      detailCategories.appendChild(p);
+    });
+
+    if (mediaType === "movie") {
+      spanMediaType.innerHTML = "movies";
+    } else if (mediaType === "tv") {
+      spanMediaType.innerHTML = "Tv Shows";
+    }
+
+    similarContent.forEach((element) => {
+      moviePreviewCreator(
+        mediaType,
+        similarMoviesContainer,
+        element.poster_path,
+        element.name || element.title,
+        element.vote_average,
+        element.id
+      );
+    });
   } catch (error) {}
 }

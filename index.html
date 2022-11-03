@@ -199,28 +199,38 @@
             
         </section>
 
-        <section id="movie--detail">
-            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u8BMLmwoc7YPHKSWawOOqC1c8lJ.jpg" alt="">
-            <h2>Titulo de la peli/serie</h2>
-            <div class="rating">Rating</div>
-            <button type="button" class="close-btn">
+        <section id="movie-detail">
+            <div class="decoration1"></div>
+            <div class="decoration2"></div>
+            <img src="https://image.tmdb.org/t/p/w780//f496cm9enuEsZkSPzCwnTESEK5s.jpg" alt="" class="detail-img">
+            <button type="button" id="detail-back-btn">
                 <span class="material-symbols-outlined">
-                    close
+                    arrow_back
+                </span>
+                <span>
+                    Go back
                 </span>
             </button>
-            <p class="p-year">1999</p>
-            <p class="p-duration">133 min</p>
-            <p class="p-cast">Jhonny Depp, Ann Hattaway</p>
-            <p class="p-genre">Action</p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Netflix-new-icon.png/800px-Netflix-new-icon.png" alt="" class="provider-img">
-            <p class="p-details">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam! Rem ducimus eius necessitatibus molestias explicabo dolores ullam architecto commodi. Maiores quo quisquam ut esse ullam eius quos voluptatum iste!</p>
-            <h3>Porque te interesó 
-               <span>'Título'</span>
-            </h3>
-            <div class="similar-content-container">
-                <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/ybSIUt48PsM08F4UZwHdjL9ZVG2.jpg" alt="Nombre peli" class="movie-img">
+            <div class="detail-txt-container">
+                <p class="detail-p1">
+                    ⭐<span id="raiting">7.5</span> <span class="material-symbols-outlined dot">radio_button_unchecked</span> <span id="time">1h 55min</span> <span class="material-symbols-outlined dot">radio_button_unchecked</span> <span id="released">12/10/2022</span>
+                </p>
+                <h2 id="detail-title">Nombre movie</h2>
+                <p id="detail-overview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam cupiditate explicabo, dolorum neque, tenetur numquam autem repellat consequuntur alias ad sequi consequatur laboriosam maxime laborum assumenda. Cumque nulla fugiat aut!</p>
+                <button type="button" id="logo-btn">
+                    <img src="https://image.tmdb.org/t/p/w300/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="" id="logo-img">
+                </button>
+                <h4>Categories</h4>
+                <div class="detail-categories-container">
+                    <p>Action</p>
+                    <p>Comedy</p>
+                </div>
             </div>
+            <h2>Similar <span class="mediaType">movies</span></h2>
+            <article id="similar-results">
+            </article>
         </section>
+
     </main>
 
     <footer>
