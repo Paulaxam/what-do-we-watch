@@ -29,10 +29,41 @@ searchBtn.addEventListener("click", () => {
   menuList.classList.remove("toggle-menu");
   const search = searchInput.value;
   if (search === "") {
-    location.hash = "";
+    location.hash = "#search";
   } else {
     location.hash = `#search=${search}`;
+    searchInput2.value = search;
   }
+});
+
+searchBtn2.addEventListener("click", () => {
+  const search = searchInput2.value;
+  location.hash = `#search=${search}`;
+});
+
+searchInput.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    const search = searchInput.value;
+    if (search === "") {
+      location.hash = "#search";
+    } else {
+      location.hash = `#search=${search}`;
+      searchInput2.value = search;
+    }
+  }
+});
+
+searchInput2.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    const search = searchInput2.value;
+    location.hash = `#search=${search}`;
+  }
+});
+
+searchBack.addEventListener("click", () => {
+  location.hash = "";
 });
 
 function navegator() {
@@ -115,6 +146,16 @@ function searchPage() {
   searchSection.classList.remove("inactive");
   movieDetailSection.classList.add("inactive");
   categoriesSection.classList.add("inactive");
+  moviesResultTitle.classList.add("inactive");
+  tvResultTitle.classList.add("inactive");
+  searchMoviesResultsContainer.innerHTML = "";
+  searchTvResultsContainer.innerHTML = "";
+  const query = location.hash.split("=")[1];
+  if (query) {
+    searchResults(query);
+    moviesResultTitle.classList.remove("inactive");
+    tvResultTitle.classList.remove("inactive");
+  }
 }
 
 function movieDetailPage() {}

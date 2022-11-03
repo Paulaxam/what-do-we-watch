@@ -170,18 +170,33 @@
         </section>
 
         <section id="search">
-            <h2>What do you want to watch?</h2>
+            <div class="search-title-container">
+                <span class="material-symbols-outlined" id="search-back">
+                    arrow_back
+                </span>
+                <h2>What do you want to watch?</h2>
+            </div>
             <form action="" id="search-bar-large">
-                <input type="search" name="search">
-                <button type="button" id="search-button">
+                <input type="search" name="search" id="search-input2">
+                <button type="button" id="search-button2">
                     <span class="material-symbols-outlined">
                     search
                     </span>
                 </button>
             </form>
-            <div class="search-results-container">
-                <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/ybSIUt48PsM08F4UZwHdjL9ZVG2.jpg" alt="Nombre peli" class="movie-img">
-            </div>
+
+            <article class="movie-results">
+                <h3 class="h3-movie-results">Movies</h3>
+                <div class="movie-search-results-container">
+                </div>
+            </article>
+
+            <article class="tv-results">
+                <h3 class="h3-tv-results">Tv Shows</h3>
+                <div class="tv-search-results-container">
+                </div>
+            </article>
+            
         </section>
 
         <section id="movie--detail">

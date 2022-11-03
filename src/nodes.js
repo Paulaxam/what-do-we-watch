@@ -53,6 +53,15 @@ const tvPopularRaiting = selector("#popular-tv-raiting");
 
 /*Section-Search*/
 const searchSection = selector("#search");
+const searchBack = selector("#search-back");
+const searchInput2 = selector("#search-input2");
+const searchBtn2 = selector("#search-button2");
+const searchMoviesResultsContainer = selector(
+  ".movie-search-results-container"
+);
+const searchTvResultsContainer = selector(".tv-search-results-container");
+const moviesResultTitle = selector(".h3-movie-results");
+const tvResultTitle = selector(".h3-tv-results");
 
 /*Section-Movie-Detail*/
 const movieDetailSection = selector("#movie--detail");

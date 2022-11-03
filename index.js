@@ -8,6 +8,27 @@ const api = axios.create({
   },
 });
 
+/*Movie data container creator function */
+
+function moviePreviewCreator(container, imgSrc, movieName, raiting) {
+  const movieContainer = create("div");
+  movieContainer.classList.add("movie-data-container");
+  const movieImg = create("img");
+  movieImg.classList.add("movie-img");
+  const raitingDiv = create("div");
+  raitingDiv.classList.add("raiting-number");
+  const raitingP = create("p");
+
+  movieImg.src = `https://image.tmdb.org/t/p/w300${imgSrc}`;
+  movieImg.alt = movieName;
+  raitingP.innerHTML = raiting;
+
+  container.appendChild(movieContainer);
+  movieContainer.appendChild(movieImg);
+  movieContainer.appendChild(raitingDiv);
+  raitingDiv.appendChild(raitingP);
+}
+
 /*Get trending movies - tv series */
 
 async function getTrendingMedia(mediaType) {
@@ -583,5 +604,48 @@ async function loadCategory(id, categoryName, mediaType) {
         raitingDiv.appendChild(raitingP);
       });
     }
+  } catch (error) {}
+}
+
+/*Search Section */
+
+async function searchResults(query) {
+  try {
+    const movieRes = await api("/search/movie", {
+      params: {
+        include_adult: false,
+        query,
+      },
+    });
+    const tvRes = await api("/search/tv", {
+      params: {
+        include_adult: false,
+        query,
+      },
+    });
+    const movieResults = movieRes.data.results.filter(
+      (movie) => movie.poster_path
+    );
+    const tvResults = tvRes.data.results.filter((show) => show.poster_path);
+
+    movieResults.forEach((movie) => {
+      moviePreviewCreator(
+        searchMoviesResultsContainer,
+        movie.poster_path,
+        movie.title,
+        movie.vote_average
+      );
+    });
+
+    tvResults.forEach((show) => {
+      moviePreviewCreator(
+        searchTvResultsContainer,
+        show.poster_path,
+        show.name,
+        show.vote_average
+      );
+    });
+
+    console.log(query, movieResults, tvResults);
   } catch (error) {}
 }
