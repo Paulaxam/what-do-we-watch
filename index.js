@@ -87,26 +87,15 @@ async function logTrendingPreview(mediaType) {
       );
       const series = await getTrendingMedia(mediaType);
       series.forEach((serie) => {
-        /*movie poster*/
-        const serieContainer = create("div");
-        serieContainer.classList.add("movie-data-container");
-        const serieImg = create("img");
-        serieImg.classList.add("movie-img");
-        serieImg.alt = `${serie.title}`;
-        serieImg.src = `https://image.tmdb.org/t/p/w300${serie.poster_path}`;
-
-        mainTrendingSeriesContainer.appendChild(serieContainer);
-        serieContainer.appendChild(serieImg);
-
-        /*movie raiting */
-        const serieRaitingContainer = create("div");
-        serieRaitingContainer.classList.add("raiting-number");
-        const serieRaitingP = create("p");
-        const serieRaiting = Number(serie.vote_average).toFixed(2);
-        serieRaitingP.innerHTML = serieRaiting;
-
-        serieContainer.appendChild(serieRaitingContainer);
-        serieRaitingContainer.appendChild(serieRaitingP);
+        console.log(serie);
+        moviePreviewCreator(
+          "tv",
+          mainTrendingSeriesContainer,
+          serie.poster_path,
+          serie.name,
+          serie.vote_average,
+          serie.id
+        );
       });
     }
   } catch (error) {
@@ -177,7 +166,7 @@ async function getRecomendedMovie(section) {
     const movieRaitingContainer = create("div");
     movieRaitingContainer.classList.add("most-popular-raiting-number");
     const movieRaitingP = create("p");
-    const movieRaiting = Number(choosenMovie.vote_average).toFixed(2);
+    const movieRaiting = Number(choosenMovie.vote_average).toFixed(1);
     movieRaitingP.innerHTML = movieRaiting;
 
     popularMovieContainer.appendChild(movieRaitingContainer);
@@ -378,22 +367,14 @@ async function loadRandomCategories() {
     const randomTvContainer = selector(".random-tv-container");
 
     randomTvList.forEach((tvSerie) => {
-      const tvContainer = create("div");
-      tvContainer.classList.add("movie-data-container");
-      const tvImg = create("img");
-      tvImg.classList.add("movie-img");
-      const raitingDiv = create("div");
-      raitingDiv.classList.add("raiting-number");
-      const raitingP = create("p");
-
-      tvImg.src = `https://image.tmdb.org/t/p/w300${tvSerie.poster_path}`;
-      tvImg.alt = tvSerie.name;
-      raitingP.innerHTML = tvSerie.vote_average;
-
-      randomTvContainer.appendChild(tvContainer);
-      tvContainer.appendChild(tvImg);
-      tvContainer.appendChild(raitingDiv);
-      raitingDiv.appendChild(raitingP);
+      moviePreviewCreator(
+        "tv",
+        randomTvContainer,
+        tvSerie.poster_path,
+        tvSerie.name,
+        tvSerie.vote_average,
+        tvSerie.id
+      );
     });
 
     /*Movies */
@@ -411,22 +392,14 @@ async function loadRandomCategories() {
     const randomMovieContainer = selector(".random-movie-container");
 
     randomMovieList.forEach((movie) => {
-      const movieContainer = create("div");
-      movieContainer.classList.add("movie-data-container");
-      const movieImg = create("img");
-      movieImg.classList.add("movie-img");
-      const raitingDiv = create("div");
-      raitingDiv.classList.add("raiting-number");
-      const raitingP = create("p");
-
-      movieImg.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
-      movieImg.alt = movie.name;
-      raitingP.innerHTML = movie.vote_average;
-
-      randomMovieContainer.appendChild(movieContainer);
-      movieContainer.appendChild(movieImg);
-      movieContainer.appendChild(raitingDiv);
-      raitingDiv.appendChild(raitingP);
+      moviePreviewCreator(
+        "movie",
+        randomMovieContainer,
+        movie.poster_path,
+        movie.title,
+        movie.vote_average,
+        movie.id
+      );
     });
   } catch (error) {
     console.log(error);
@@ -437,56 +410,32 @@ async function loadRandomCategories() {
 async function logTrending(mediaType) {
   try {
     if (mediaType === "movie") {
-      const TrendingMoviesContainer = selector(
+      const trendingMoviesContainer = selector(
         ".movies-trending-movies-container"
       );
       const movies = await getTrendingMedia(mediaType);
       movies.forEach((movie) => {
-        /*movie poster*/
-        const movieContainer = create("div");
-        movieContainer.classList.add("movie-data-container");
-        const movieImg = create("img");
-        movieImg.classList.add("movie-img");
-        movieImg.alt = `${movie.title}`;
-        movieImg.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
-
-        TrendingMoviesContainer.appendChild(movieContainer);
-        movieContainer.appendChild(movieImg);
-
-        /*movie raiting */
-        const movieRaitingContainer = create("div");
-        movieRaitingContainer.classList.add("raiting-number");
-        const movieRaitingP = create("p");
-        const movieRaiting = Number(movie.vote_average).toFixed(2);
-        movieRaitingP.innerHTML = movieRaiting;
-
-        movieContainer.appendChild(movieRaitingContainer);
-        movieRaitingContainer.appendChild(movieRaitingP);
+        moviePreviewCreator(
+          "movie",
+          trendingMoviesContainer,
+          movie.poster_path,
+          movie.title,
+          movie.vote_average,
+          movie.id
+        );
       });
     } else if (mediaType === "tv") {
-      const TrendingSeriesContainer = selector(".tv-trending-series-container");
+      const trendingSeriesContainer = selector(".tv-trending-series-container");
       const series = await getTrendingMedia(mediaType);
       series.forEach((serie) => {
-        /*series poster*/
-        const serieContainer = create("div");
-        serieContainer.classList.add("movie-data-container");
-        const serieImg = create("img");
-        serieImg.classList.add("movie-img");
-        serieImg.alt = `${serie.title}`;
-        serieImg.src = `https://image.tmdb.org/t/p/w300${serie.poster_path}`;
-
-        TrendingSeriesContainer.appendChild(serieContainer);
-        serieContainer.appendChild(serieImg);
-
-        /*series raiting */
-        const serieRaitingContainer = create("div");
-        serieRaitingContainer.classList.add("raiting-number");
-        const serieRaitingP = create("p");
-        const serieRaiting = Number(serie.vote_average).toFixed(2);
-        serieRaitingP.innerHTML = serieRaiting;
-
-        serieContainer.appendChild(serieRaitingContainer);
-        serieRaitingContainer.appendChild(serieRaitingP);
+        moviePreviewCreator(
+          "tv",
+          trendingSeriesContainer,
+          serie.poster_path,
+          serie.name,
+          serie.vote_average,
+          serie.id
+        );
       });
     }
   } catch (error) {
@@ -569,21 +518,14 @@ async function loadCategory(id, categoryName, mediaType) {
 
       /*Load movies*/
       movieList.forEach((movie) => {
-        const movieDataContainer = create("div");
-        movieDataContainer.classList.add("movie-data-container");
-        const movieImg = create("img");
-        movieImg.classList.add("movie-img");
-        movieImg.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
-        movieImg.alt = movie.title;
-        const raitingDiv = create("div");
-        raitingDiv.classList.add("raiting-number");
-        const raitingP = create("p");
-        raitingP.innerHTML = movie.vote_average;
-
-        categoryContainer.appendChild(movieDataContainer);
-        movieDataContainer.appendChild(movieImg);
-        movieDataContainer.appendChild(raitingDiv);
-        raitingDiv.appendChild(raitingP);
+        moviePreviewCreator(
+          "movie",
+          categoryContainer,
+          movie.poster_path,
+          movie.title,
+          movie.vote_average,
+          movie.id
+        );
       });
     } else if (mediaType === "tv") {
       const { data } = await api("/discover/tv", {
@@ -597,21 +539,14 @@ async function loadCategory(id, categoryName, mediaType) {
 
       /*Load tv Shows*/
       tvShowsList.forEach((tvShow) => {
-        const showDataContainer = create("div");
-        showDataContainer.classList.add("movie-data-container");
-        const showImg = create("img");
-        showImg.classList.add("movie-img");
-        showImg.src = `https://image.tmdb.org/t/p/w300${tvShow.poster_path}`;
-        showImg.alt = tvShow.name;
-        const raitingDiv = create("div");
-        raitingDiv.classList.add("raiting-number");
-        const raitingP = create("p");
-        raitingP.innerHTML = tvShow.vote_average;
-
-        categoryContainer.appendChild(showDataContainer);
-        showDataContainer.appendChild(showImg);
-        showDataContainer.appendChild(raitingDiv);
-        raitingDiv.appendChild(raitingP);
+        moviePreviewCreator(
+          "tv",
+          categoryContainer,
+          tvShow.poster_path,
+          tvShow.name,
+          tvShow.vote_average,
+          tvShow.id
+        );
       });
     }
   } catch (error) {}
